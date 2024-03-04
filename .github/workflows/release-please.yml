@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - trunk
-      - feat/cluster-deployment
 
 permissions:
   contents: write
@@ -17,5 +16,5 @@ jobs:
     steps:
       - uses: google-github-actions/release-please-action@v4
         with:
-          target-branch: feat/cluster-deployment
+          target-branch: trunk
           token: ${{ secrets.GH_RELEASE_PLEASE_TOKEN }}
