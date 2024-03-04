@@ -7,7 +7,7 @@
       "changelog-path": "CHANGELOG.md",
       "component": ".",
       "draft": false,
-      "include-component-in-tag": false,
+      "include-component-in-tag": true,
       "prerelease": false,
       "release-type": "simple"
     }
