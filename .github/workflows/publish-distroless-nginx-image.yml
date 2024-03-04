@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'distroless-nginx-v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 env:
   REGISTRY_IMAGE: ${{ secrets.SCALEWAY_REGISTRY_ENDPOINT }}/distroless-nginx
