@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.0.0...v1.1.0) (2024-03-05)
+
+
+### Features
+
+* update error page location in default.conf ([fe0c937](https://github.com/Nos-Futurs/distroless-nginx/commit/fe0c937ea872d8a1b1569abbc1e09477c3d36df2))
+
 ## 1.0.0 (2024-03-04)
 
 
