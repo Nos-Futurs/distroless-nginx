@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM debian:11 as builder
+FROM debian:11-slim as builder
 
 ENV USER=nonroot
 ENV UID=10001 
@@ -24,17 +24,17 @@ RUN apt update && apt -y install wget gnupg binutils && \
     apt install --download-only --reinstall libidn2-0 libnss-nis libnss-nisplus  debconf gcc-10-base && \
     for f in /var/cache/apt/archives/*.deb; do dpkg-deb -xv $f /packages; done && \
     rm -rf /packages/usr/share/bash-completion  \
-        /packages/usr/share/debconf \
-        /packages/usr/share/doc \
-        /packages/usr/share/lintian	\
-        /packages/usr/share/locale	\
-        /packages/usr/share/man \
-        /packages/usr/share/perl5  \
-        /packages/usr/share/pixmaps \
-        /packages/usr/bin \
-        /packages/usr/bin/dpkg* \
-        /packages/usr/bin/nginx-debug && \
-        mkdir -p /packages/var/run
+    /packages/usr/share/debconf \
+    /packages/usr/share/doc \
+    /packages/usr/share/lintian	\
+    /packages/usr/share/locale	\
+    /packages/usr/share/man \
+    /packages/usr/share/perl5  \
+    /packages/usr/share/pixmaps \
+    /packages/usr/bin \
+    /packages/usr/bin/dpkg* \
+    /packages/usr/bin/nginx-debug && \
+    mkdir -p /packages/var/run
 
 RUN chown -R nonroot:nonroot /var/cache /var/run
 
