@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.1.0...v1.2.0) (2024-03-05)
+
+
+### Features
+
+* update Dockerfile to use debian:11-slim as builder image ([93fa9b3](https://github.com/Nos-Futurs/distroless-nginx/commit/93fa9b39fd4107fd8ef7cd7d0fa5488b31666c1d))
+
 ## [1.1.0](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.0.0...v1.1.0) (2024-03-05)
 
 
