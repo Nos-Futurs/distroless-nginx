@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.2.0...v1.2.1) (2024-03-07)
+
+
+### Miscellaneous Chores
+
+* release 1.2.1 ([999d94b](https://github.com/Nos-Futurs/distroless-nginx/commit/999d94b8e210a4ac1ae7428e12ec4426e4adea51))
+
 ## [1.2.0](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.1.0...v1.2.0) (2024-03-05)
 
 
