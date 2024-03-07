@@ -8,13 +8,14 @@ on:
 
 env:
   REGISTRY_IMAGE: ${{ secrets.SCALEWAY_REGISTRY_ENDPOINT }}/distroless-nginx
+  EMPTY_VALUE: ""
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ["", "debug"]
+        tag: ["", "-debug"]
         platform: ["linux/amd64", "linux/arm64"]
     steps:
       -
@@ -27,9 +28,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY_IMAGE }}
           tags: |
-            type=match,enable=true,prefix=,suffix=${{ (!matrix.tag && '""') ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+.\d+.\d+),group=1
-            type=match,enable=true,prefix=,suffix=${{ (!matrix.tag && '""') ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+.\d+),group=1
-            type=match,enable=true,prefix=,suffix=${{ (!matrix.tag && '""') ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+),group=1
+            type=match,enable=true,prefix=,suffix=${{ matrix.tag }},onlatest=true,pattern=v(\d+.\d+.\d+),group=1
+            type=match,enable=true,prefix=,suffix=${{ matrix.tag }},onlatest=true,pattern=v(\d+.\d+),group=1
+            type=match,enable=true,prefix=,suffix=${{ matrix.tag }},onlatest=true,pattern=v(\d+),group=1
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -48,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile${{ (!matrix.tag && '""') ||  format('.{0}', matrix.tag) }}
+          file: ./Dockerfile${{ matrix.tag }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
