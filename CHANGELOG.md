@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.8](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.2.7...v1.2.8) (2024-03-07)
+
+
+### Bug Fixes
+
+* **ga:** update Dockerfile platforms to upload both architectures ([c653166](https://github.com/Nos-Futurs/distroless-nginx/commit/c65316662b618db803ac0a800cbcf31eb4f1d709))
+
 ## [1.2.7](https://github.com/Nos-Futurs/distroless-nginx/compare/v1.2.6...v1.2.7) (2024-03-07)
 
 
