@@ -27,9 +27,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY_IMAGE }}
           tags: |
-            type=match,enable=true,prefix=,suffix=${{ (matrix.tag == '' && matrix.tag) ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+.\d+.\d+),group=1
-            type=match,enable=true,prefix=,suffix=${{ (matrix.tag == '' && matrix.tag) ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+.\d+),group=1
-            type=match,enable=true,prefix=,suffix=${{ (matrix.tag == '' && matrix.tag) ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+),group=1
+            type=match,enable=true,prefix=,suffix=${{ !matrix.tag ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+.\d+.\d+),group=1
+            type=match,enable=true,prefix=,suffix=${{ !matrix.tag ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+.\d+),group=1
+            type=match,enable=true,prefix=,suffix=${{ !matrix.tag ||  format('-{0}', matrix.tag) }},onlatest=true,pattern=v(\d+),group=1
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -48,7 +48,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile${{ (matrix.tag == '' && matrix.tag) ||  format('.{0}', matrix.tag) }}
+          file: ./Dockerfile${{ !matrix.tag ||  format('.{0}', matrix.tag) }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: ${{ matrix.platform }}
           push: ${{ github.event_name != 'pull_request' }}
